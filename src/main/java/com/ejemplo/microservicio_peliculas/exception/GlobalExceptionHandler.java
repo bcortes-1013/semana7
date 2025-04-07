@@ -12,15 +12,14 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(PeliculaNoEncontradaException.class)
-    public ResponseEntity<Map<String, Object>> manejarPeliculaNoEncontrada(PeliculaNoEncontradaException ex) {
+    @ExceptionHandler(NoEncontradoException.class)
+    public ResponseEntity<Map<String, Object>> manejarPeliculaNoEncontrada(NoEncontradoException ex) {
         Map<String, Object> errorResponse = new HashMap<>();
         errorResponse.put("timestamp", LocalDateTime.now());
-        errorResponse.put("status", 422);
-        errorResponse.put("error", "Unprocessable Entity");
+        errorResponse.put("status", 404);
+        errorResponse.put("error", "No encontrado");
         errorResponse.put("message", ex.getMessage());
-        errorResponse.put("path", "/peliculas/{id}");
 
-        return new ResponseEntity<>(errorResponse, HttpStatus.UNPROCESSABLE_ENTITY);
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 }
