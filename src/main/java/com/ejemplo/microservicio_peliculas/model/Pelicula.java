@@ -1,26 +1,23 @@
 package com.ejemplo.microservicio_peliculas.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name="peliculas")
-
 public class Pelicula{
     @Id
     @NotNull(message = "El ID no puede ser nulo")
@@ -36,7 +33,7 @@ public class Pelicula{
     private int año;
 
     @NotBlank(message = "Director no puede ser vacío")
-    @Size(min = 1, max = 100, message = "El director debe tener entre 1 y carácteres")
+    @Size(min = 1, max = 100, message = "El director debe tener entre 1 y 100 carácteres")
     private String director;
 
     @NotBlank(message = "El género no puede estar vacío")
@@ -45,4 +42,8 @@ public class Pelicula{
 
     @Size(max = 255, message = "La sinopsis no debe superar los 255 caracteres")
     private String sinopsis;
+
+    public boolean esReciente() {
+        return this.año >= 2020;
+    }
 }

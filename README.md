@@ -1,11 +1,13 @@
-# 🎬 Microservicio de Películas con Oracle 📄
+# 🎬 Microservicio de Películas 📄
 
-Este es un microservicio en **Spring Boot** que permite gestionar un catálogo de películas. Incluye diversos endpoints para pruebas 
+Este es un microservicio en **Spring Boot** que permite gestionar un catálogo de películas y realizar test unitarios.
 
 ## 🚀 Características
 - ✅ Proyecto para conectar con BD Oracle XE
 - ✅ Uso de validaciones en BackEnd 
 - ✅ Respuestas en formato JSON  
+- ✅ Pruebas unitarias  
+- ✅ Uso de HATEOAS  
 
 ## 🖋️ Uso con Postman
 - GET **/peliculas** Trae todos las películas disponibles 
